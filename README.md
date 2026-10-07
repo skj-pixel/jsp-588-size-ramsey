@@ -1,23 +1,68 @@
-# JSP-000588 — Two-color size Ramsey numbers of paths and cycles
+# JSP-000588 — Lean 4.20 scaffold for How fast do the two-color size Ramsey numbers of p...
 
-## Problem
-How fast do the two-color size Ramsey numbers of prescribed paths and
-cycles grow?
+> **Problem (upstream JSP-000588)**: How fast do the two-color size Ramsey numbers of prescribed paths and cycles grow?
+> **Solver**: Erdős–Faudree–Rousseau–Schelp (1978); Beck (1983)
+> **JSP bounty**: USD $100
+> **Upstream status** ([TheJustinSunPrize/awards](https://github.com/TheJustinSunPrize/awards/blob/main/problems/catalog-0501-0600.md#JSP-000588)): **Solved, Lean proof: No, Eligible to claim: No**
 
-References:
-- [EFRS78b] Erdős, Faudree, Rousseau, Schelp — "The size Ramsey number"
-  Period. Math. Hungar. (1978), 145-161.
-- [Be83b] Beck — "On size Ramsey number of paths, trees, and circuits. I"
-  J. Graph Theory (1983), 115-129.
+## What this repository is
 
-## Status
-The exact asymptotic is f̂(R(n; P_n), P_n) = (1 + o(1)) · 4n (Beck 1983
-for paths; similarly for cycles). This scaffold captures the outer
-statement on a `Finset ℕ` vertex carrier, leaving the main theorem
-as `sorry`.
+This is a **Lean 4.20.0 + Mathlib v4.20.0 scaffold** for the JSP outer theorem.
+The file structure (lake project, lean-toolchain, lakefile, single `JSP588.lean`)
+is published so that a future Lean formalization team can clone this repository,
+fill in the `sorry` placeholders, and produce a verified Lean proof.
 
-## Build
+**This is NOT a Lean proof.** Every `theorem` in `JSP588.lean`
+ends with `:= by sorry`. Per the JSP `docs/verification.md` policy:
+
+> A Lean submission without the complete proof is invalid and will not be accepted.
+
+## Files
+
 ```
-cd D:\evox-main\JustinSunPrize\jsp-588-size-ramsey
+JSP588.lean    -- Outer statement with `sorry`
+README.md              -- This file
+lakefile.toml          -- Lean 4 build config (lake)
+lean-toolchain.json     -- Pinned toolchain: Lean v4.20.0
+lake-manifest.json     -- Pinned dependencies: mathlib v4.20.0
+.gitignore             -- Excludes `.lake/` build cache
+```
+
+## Build (to verify the scaffold compiles)
+
+```sh
 lake build
 ```
+
+## Math content
+
+Outer statement: size Ramsey numbers for paths and cycles
+
+The Lean file states the outer theorem in a form suitable for filling in with
+Mathlib lemmas. To make this a complete Lean proof, a team would need to:
+
+1. Port the corresponding published paper (e.g. Erdős–Faudree–Rousseau–Schelp (1978); Beck (1983)).
+2. For each lemma in the paper, find or build a corresponding Mathlib
+   statement.
+3. Replace `sorry` with the corresponding Lean tactic proof.
+
+## References
+
+- Mathematical proof: see the publication reference cited above
+- Upstream JSP catalog: https://github.com/TheJustinSunPrize/awards/blob/main/problems/catalog-0501-0600.md#JSP-000588
+- Attribution policy: https://github.com/TheJustinSunPrize/awards/blob/main/docs/attribution.md
+
+## Submission path
+
+To claim the bounty for JSP-000588, the Lean author (or a contributor with
+attributable credit on the Lean repo) must:
+
+1. Fill the `sorry` in `JSP588.lean` and verify the proof with
+   `lake build`.
+2. Open a PR to `TheJustinSunPrize/awards` adding the Lean source URL to the
+   catalog entry.
+3. After merge, open a claim-award issue from the Lean author's own GitHub
+   account using the `claim-award.yml` template.
+4. Email identity-verification materials to `thejustinsunprize@hejustinsun.com`.
+
+None of these steps can be automated from an agent sandbox.
